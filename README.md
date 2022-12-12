@@ -1,5 +1,5 @@
 # Unsupervised Multimodal Change Detection Based on Structural Relationship Graph Representation Learning
-Code for [Unsupervised Change Detection in Multi-temporal VHR Images Based on Deep Kernel PCA Convolutional Mapping Network.](https://arxiv.org/abs/2210.00941)
+Code for [Unsupervised Multimodal Change Detection Based on Structural Relationship Graph Representation Learning.](https://arxiv.org/abs/2210.00941)
 
 <img src="./figures/SRGCAE.jpg">
 
