@@ -26,7 +26,7 @@ Please cite our paper if you use this code in your research.
   journal={IEEE Transactions on Geoscience and Remote Sensing}, 
   title={Unsupervised Multimodal Change Detection Based on Structural Relationship Graph Representation Learning}, 
   year={2022},
-  volume={},
+  volume={60},
   number={},
   pages={1-18},
   doi={10.1109/TGRS.2022.3229027}
