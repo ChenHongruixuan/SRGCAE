@@ -1,0 +1,4 @@
+This multimodal dataset is from Prof. Maoguo Gong's group.
+If you use this dataset, we suggest you kindly considering to cite their paper, such as [1] and [2].
+[1] J. Liu, M. Gong, K. Qin, and P. Zhang, “A deep convolutional coupling network for change detection based on heterogeneous optical and radar images,” IEEE Trans. Neural Netw. Learn. Syst., vol. 29, no. 3, pp. 545–559, Mar. 2016.
+[2] P. Zhang, M. Gong, L. Su, J. Liu, and Z. Li, “Change detection based on deep feature representation and mapping transformation for multi-spatial-resolution remote sensing images,” ISPRS J. Photogramm. Remote Sens., vol. 116, pp. 24–41, Jun. 2016.
