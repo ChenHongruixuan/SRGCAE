@@ -54,7 +54,7 @@ Please considering citing our paper if you use this code in your research.
 ```
 
 ## Acknowledgement
-The Python code draws in part on the Matlab code of [NPSG](https://github.com/yulisun/NPSG) and [IRGMcS](https://github.com/yulisun/IRG-McS). Many thanks for their brilliant works! 
+The Python code draws in part on the Matlab code of [NPSG](https://github.com/yulisun/NPSG) and [IRGMcS](https://github.com/yulisun/IRG-McS). Many thanks for these brilliant works! 
 
 ## Q & A
 **For any questions, please [contact us.](mailto:Qschrx@gmail.com)**
