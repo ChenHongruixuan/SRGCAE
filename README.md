@@ -38,6 +38,14 @@ Postprocessing based on morphological filtering
 aux_func/postprocess.py
 ```
 
+## Dataset
+This repo contains the Shuguang dataset.
+
+The homogeneous dataset, Hanyang dataset has been open-sourced. You can download it [here](http://sigma.whu.edu.cn/resource.php). 
+
+The Texas dataset can be downloaded from Professor Michele Volpi's [webpage](https://sites.google.com/site/michelevolpiresearch/home). 
+
+
 ## Citation
 Please considering citing our paper if you use this code in your research.
 ```
