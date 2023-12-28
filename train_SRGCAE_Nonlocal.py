@@ -65,6 +65,7 @@ def train_model(args):
     # Vertex information reconstruction
     for _epoch in range(args.epoch):
         for _iter in range(obj_nums):
+            optimizer.zero_grad()
             node_t1 = node_set_t1[_iter]  # np.expand_dims(node_set_t1[_iter], axis=0)
             node_t2 = node_set_t2[_iter]  # np.expand_dims(node_set_t2[_iter], axis=0)
             _, norm_adj_t1 = am_set_t1[_iter]  # np.expand_dims(am_set_t1[_iter], axis=0)
