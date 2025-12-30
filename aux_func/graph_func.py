@@ -20,9 +20,10 @@ def normalize_adj(adj):
 
 def construct_affinity_matrix(data, objects, band_width):
     am_set = []
-    obj_nums = np.max(objects)
-    for i in range(0, obj_nums + 1):
-        sub_object = data[objects == i]
+    # Get actual segment IDs from objects array
+    unique_segments = np.unique(objects)
+    for obj_idx in unique_segments:
+        sub_object = data[objects == obj_idx]
         adj_mat = gaussian_kernel_distance(sub_object, band_width=band_width)
         norm_adj_mat = normalize_adj(adj_mat)
         am_set.append([adj_mat, norm_adj_mat])

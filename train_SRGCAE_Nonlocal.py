@@ -1,7 +1,7 @@
 import argparse
 import time
 
-import imageio
+import imageio.v2 as imageio
 import numpy as np
 import torch
 import torch.nn.functional as F
@@ -47,11 +47,13 @@ def train_model(args):
     img_t1 = preprocess_img(img_t1, d_type='sar', norm_type='norm')
     img_t2 = preprocess_img(img_t2, d_type='opt', norm_type='norm')
 
-    obj_nums = np.max(objects) + 1
+    # Get actual segment IDs (SLIC may not start from 0 or may have gaps)
+    unique_segments = np.unique(objects)
+    obj_nums = len(unique_segments)
 
     node_set_t1 = []
     node_set_t2 = []
-    for obj_idx in range(obj_nums):
+    for obj_idx in unique_segments:
         node_set_t1.append(img_t1[objects == obj_idx])
         node_set_t2.append(img_t2[objects == obj_idx])
     am_set_t1 = construct_affinity_matrix(img_t1, objects, args.band_width_t1)
@@ -135,8 +137,8 @@ def train_model(args):
             np.abs(dist_set_t2[i, neigh_idx_t2[i, 1:args.knn_num]] - dist_set_t2[i, neigh_idx_t1[i, 1:args.knn_num]]))
     diff_map = np.zeros((height, width))
 
-    for i in range(0, obj_nums):
-        diff_map[objects == i] = fx_node_dist[i] + fy_node_dist[i]
+    for i, obj_idx in enumerate(unique_segments):
+        diff_map[objects == obj_idx] = fx_node_dist[i] + fy_node_dist[i]
     diff_map = np.reshape(diff_map, (height * width, 1))
     threshold = otsu(diff_map)
     diff_map = np.reshape(diff_map, (height, width))

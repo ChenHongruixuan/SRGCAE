@@ -1,0 +1,5 @@
+# Core Dependencies (from PyPI default index)
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+scikit-learn
+scikit-image
+imageio

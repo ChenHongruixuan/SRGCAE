@@ -13,17 +13,37 @@ This is an official implementation of unsupervised multimodal change detection f
 <img src="./figures/SRGCAE.jpg">
 
 ## Get started
-### Requirements
 
+### Environment Setup
+
+#### Step 1: Create Conda Environment
+First, create the base environment using the provided `environment.yml`:
+```bash
+conda env create -f enviroment.yml
+conda activate srgcae
 ```
-python==3.9.7
-pytorch==1.9.0
-scikit-learn==0.18.3
-imageio=2.9.0
-numpy==1.20.3
-gdal==3.0.2
-opencv==4.5.5
+
+#### Step 2: Install PyTorch with CUDA Support
+Install PyTorch with CUDA 12.8 from the PyTorch index:
+```bash
+pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu128
 ```
+
+#### Step 3: Install Additional Dependencies
+Install remaining Python packages:
+```bash
+pip install -r requirements.txt
+```
+
+### Requirements
+- Python 3.10+
+- CUDA Toolkit (installed via conda)
+- PyTorch 2.0+ with CUDA support
+- scikit-learn
+- scikit-image
+- imageio
+- numpy
+- opencv-python
 ### Dataset
 This repo contains the Shuguang dataset. The homogeneous dataset, Hanyang dataset has been open-sourced. You can download it [here](http://sigma.whu.edu.cn/resource.php). The Texas dataset can be downloaded from Prof. Michele Volpi's [webpage](https://sites.google.com/site/michelevolpiresearch/home). 
 
