@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from GraphConv import GraphConvolution
+from .GraphConv import GraphConvolution
 
 
 class GraphConvAutoEncoder_VertexRecon(nn.Module):

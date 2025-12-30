@@ -1,7 +1,6 @@
 import argparse
 import time
-
-import imageio
+import imageio.v2 as imageio
 import numpy as np
 import torch
 import torch.nn.functional as F
@@ -40,14 +39,16 @@ def train_model(args):
     img_t1 = preprocess_img(img_t1, d_type='sar', norm_type='stad')
     img_t2 = preprocess_img(img_t2, d_type='opt', norm_type='stad')
     # objects = np.load('./object_idx.npy')
-    obj_nums = np.max(objects) + 1
+    
+    # Get actual segment IDs (SLIC may not start from 0 or may have gaps)
+    unique_segments = np.unique(objects)
+    obj_nums = len(unique_segments)
 
     node_set_t1 = []
     node_set_t2 = []
-    for idx in range(obj_nums):
-        obj_idx = objects == idx
-        node_set_t1.append(img_t1[obj_idx])
-        node_set_t2.append(img_t2[obj_idx])
+    for obj_idx in unique_segments:
+        node_set_t1.append(img_t1[objects == obj_idx])
+        node_set_t2.append(img_t2[objects == obj_idx])
     am_set_t1 = construct_affinity_matrix(img_t1, objects, args.band_width_t1)
     am_set_t2 = construct_affinity_matrix(img_t2, objects, args.band_width_t2)
     GCAE_model = GraphConvAutoEncoder_EdgeRecon(nfeat=3, nhid=16, nclass=3, dropout=0.5)
@@ -112,8 +113,8 @@ def train_model(args):
         diff_set.append(diff.data.cpu().numpy())
 
     diff_map = np.zeros((height, width))
-    for i in range(0, obj_nums):
-        diff_map[objects == i] = diff_set[i]
+    for i, obj_idx in enumerate(unique_segments):
+        diff_map[objects == obj_idx] = diff_set[i]
 
     diff_map = np.reshape(diff_map, (height * width, 1))
 

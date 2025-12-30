@@ -1,0 +1,8 @@
+name: srgcae
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.11
+  - nvidia::cuda-toolkit
